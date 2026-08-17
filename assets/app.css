@@ -1,0 +1,220 @@
+:root {
+  --page-bg: #f6f0e8;
+  --panel-bg: #fffaf5;
+  --plot-bg: #fffdf9;
+  --stroke: #e6d7c6;
+  --stroke-strong: #d3bda2;
+  --text: #2a221c;
+  --muted: #68584b;
+  --accent: #c16926;
+  --accent-soft: rgba(193, 105, 38, 0.14);
+  --shadow: 0 22px 48px rgba(72, 47, 28, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(193, 105, 38, 0.16), transparent 28%),
+    linear-gradient(180deg, #f9f4ed 0%, var(--page-bg) 100%);
+  color: var(--text);
+  font-family: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.control-panel,
+.plot-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.control-panel {
+  position: sticky;
+  top: 20px;
+  padding: 22px 18px 18px;
+}
+
+.panel-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.panel-header p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.control-group.compact {
+  margin-bottom: 8px;
+}
+
+.control-group label,
+.advanced-panel summary {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.control-widget,
+.numeric-input input,
+.Select-control,
+input[type="number"] {
+  font-family: inherit;
+}
+
+.numeric-input input,
+input[type="number"] {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--stroke-strong);
+  border-radius: 12px;
+  background: rgba(255, 253, 249, 0.9);
+  color: var(--text);
+}
+
+.stacked-radio,
+.segmented-radio,
+.single-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.segmented-radio {
+  flex-direction: row;
+  gap: 10px;
+}
+
+.stacked-radio label,
+.segmented-radio label,
+.single-checklist label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.segmented-radio label {
+  flex: 1 1 0;
+  justify-content: center;
+}
+
+.stacked-radio input,
+.segmented-radio input,
+.single-checklist input {
+  accent-color: var(--accent);
+}
+
+.divider {
+  height: 1px;
+  margin: 4px 0 16px;
+  background: linear-gradient(90deg, transparent, var(--stroke-strong), transparent);
+}
+
+.advanced-panel {
+  margin-top: 8px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--stroke);
+}
+
+.advanced-panel summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.dataset-summary {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(193, 105, 38, 0.12), rgba(193, 105, 38, 0.04));
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.plot-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.plot-card {
+  overflow: hidden;
+}
+
+.projection-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.js-plotly-plot .plotly .modebar {
+  right: 10px !important;
+  top: 10px !important;
+}
+
+.empty-state {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+  color: var(--text);
+}
+
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 820px) {
+  .projection-row,
+  .advanced-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    padding: 14px;
+  }
+}
